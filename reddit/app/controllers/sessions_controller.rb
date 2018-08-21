@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_credential(params[:user][:username], params[:user][:passowrd])
+    user = User.find_by_credentials(params[:user][:username], params[:user][:passowrd])
     if user
       log_in(user)
-      # redirect_to
+      redirect_to subs_url
     else
       flash[:errors] = ["Invalid password or username"]
       render :new
