@@ -8,6 +8,11 @@ class User < ApplicationRecord
     foreign_key: :moderator_id,
     class_name: :User
 
+  has_many :posts,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Post
+
   attr_reader :password
 
   after_initialize :ensure_session_token
